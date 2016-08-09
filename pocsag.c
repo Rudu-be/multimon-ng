@@ -37,6 +37,9 @@
 /* ---------------------------------------------------------------------- */
 
 //#define CHARSET_LATIN1
+
+#define CHARSET_S0S
+
 //#define CHARSET_UTF8 //ÄÖÜäöüß
 
 /* ---------------------------------------------------------------------- */
@@ -179,7 +182,15 @@ static char *translate_alpha(unsigned char chr)
                  { 0x7c, "ö" }, /* lower case o dieresis */
                  { 0x7d, "ü" }, /* lower case u dieresis */
                  { 0x7e, "ß" }, /* sharp s */
-             #else
+             #elif defined CHARSET_S0S
+                 { 0x5b, "[" }, /* [ */
+                 { 0x5c, "/" }, /* \ */
+                 { 0x5d, "]" }, /* ] */
+                 { 0x7b, "{" }, /* { */
+                 { 0x7c, "\" }, /* / */
+                 { 0x7d, "}" }, /* } */
+                 { 0x7e, "~" }, /* ~ */
+	     #else
                  { 0x5b, "AE" }, /* upper case A dieresis */
                  { 0x5c, "OE" }, /* upper case O dieresis */
                  { 0x5d, "UE" }, /* upper case U dieresis */
